@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота № 1 - Варіант 12</title>
+    <script>
+        function fun(a) {
+            main_form.t_res.value = a;
+        }
+
+        function calculationTask2() {
+            let x = 6;
+            let y = 3;
+            let z = 4;
+            let result = Math.pow((1 - x / y), 2) + z;
+            alert("Результат виконання завдання 2: " + result);
+        }
+
+        function calculationTask4() {
+            let x = parseFloat(form4.t_x.value);
+            let y = parseFloat(form4.t_y.value);
+            let F;
+            
+            if (x * y > 0) {
+                F = x - y;
+            } else if (y < 0 && x > 3 * y) {
+                F = Math.pow(x, 2) - (y / x);
+            } else {
+                F = 3 * x * y - Math.pow(x, 2) * Math.pow(y, 2);
+            }
+            form4.t_f.value = F;
+        }
+
+        function calculationTask5() {
+            let x = parseFloat(form5.t_x5.value);
+            let y = parseFloat(form5.t_y5.value);
+            let sum = 0.0;
+            
+            for (let i = 6; i <= 12; i++) {
+                let powMinus1 = (i % 2 === 0) ? 1 : -1;
+                
+                let factI = 1;
+                for (let j = 1; j <= i; j++) factI *= j;
+                
+                let term = (powMinus1 * (-2 * x + Math.pow(y, 2))) / factI;
+                sum += term;
+            }
+            form5.t_res5.value = sum.toFixed(4);
+        }
+    </script>
+</head>
+<body onLoad="fun('Відбулось завантаження сторінки');">
+
+    <div class="task-box">
+        <h3>Завдання 1.</h3>
+        <p>Це звичайний HTML абзац.</p>
+        <script language="JavaScript">
+            document.write("Привіт! Мене звати Павлюк Василь, студент групи ІПЗ-23.");
+        </script>
+        <p>Знову звичайний HTML абзац.</p>
+        <form>
+            <input type="button" value="Інформація про мене" onClick="alert('Я народився 12.01.2007 року в селі Балинці')">
+        </form>
+    </div>
+
+    <div class="task-box">
+        <h3>Завдання 2.</h3>
+        <p>Розрахунок арифметичної операції (Варіант 12)</p>
+        <form>
+            <input type="button" value="Calculate" onClick="calculationTask2()">
+        </form>
+    </div>
+
+    <div class="task-box">
+        <h3>Завдання 3.</h3>
+        <p>Обробка подій (Варіант 12: onClick, onMouseOut)</p>
+        <form id="main_form">
+            <input type="text" size="100" value="onClick (клікніть сюди)" onClick="fun('Відбувся клік на текстовому елементі форми (onClick)');"><br>
+            <input type="text" size="100" value="onMouseOut (наведіть і відведіть курсор)" onMouseOut="fun('Курсор покинув межі текстового поля (onMouseOut)');"><br>
+            <input type="text" size="100" id="t_res" value=""><br>
+        </form>
+    </div>
+
+    <div class="task-box">
+        <h3>Завдання 4.</h3>
+        <p>Розгалужений обчислювальний процес (Варіант 12)</p>
+        <form id="form4">
+            x = <input type="text" id="t_x" value="4"><br>
+            y = <input type="text" id="t_y" value="2"><br>
+            F = <input type="text" id="t_f" value=""><br>
+            <input type="button" value="Розрахувати" onClick="calculationTask4()">
+        </form>
+    </div>
+
+    <div class="task-box">
+        <h3>Завдання 5.</h3>
+        <p>Розрахунок суми ряду (Варіант 12)</p>
+        <form id="form5">
+            x = <input type="text" id="t_x5" value="2"><br>
+            y = <input type="text" id="t_y5" value="3"><br>
+            Сума = <input type="text" id="t_res5" value=""><br>
+            <input type="button" value="Розрахувати суму" onClick="calculationTask5()">
+        </form>
+    </div>
+
+</body>
+</html>

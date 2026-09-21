@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота № 1 - Завдання 7</title>
+    <script>
+        let product = ["Вафлі", "Вертки", "Виноград", "Вода"];
+        let quantity = ["120", "50", "90", "200"];
+        let cost = ["35.0", "65.5", "110.0", "15.0"];
+        let currentIndex = 0;
+
+        function findProductSelect() {
+            let select = document.getElementById('product_select');
+            currentIndex = select.selectedIndex;
+            
+            form7.output_qty_7.value = "Кількість на складі: " + quantity[currentIndex];
+            form7.output_cost_7.value = "Вартість за одиницю: " + cost[currentIndex];
+        }
+
+        function fun2() {
+            let total = parseFloat(quantity[currentIndex]) * parseFloat(cost[currentIndex]);
+            document.getElementById('total_res').innerText = "Загальна вартість товару: " + total;
+        }
+    </script>
+</head>
+<body onLoad="findProductSelect()">
+
+    <div class="task-box">
+        <h3>Завдання 7.</h3>
+        <p>Вибір товару на літеру «В» із випадаючого списку</p>
+        <form name="form7">
+            Оберіть товар: 
+            <select id="product_select" onChange="findProductSelect()">
+                <option value="Вафлі">Вафлі</option>
+                <option value="Вертки">Вертки</option>
+                <option value="Виноград">Виноград</option>
+                <option value="Вода">Вода</option>
+            </select><br>
+            <input type="text" size="50" name="output_qty_7"><br>
+            <input type="text" size="50" name="output_cost_7"><br><br>
+            <input type="button" value="Загальна сума" onClick="fun2()">
+            <p id="total_res" style="font-weight: bold; color: green;"></p>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота № 1 - Завдання 6</title>
+    <script>
+        let product = ["Вафлі", "Вертки", "Виноград", " Вода"];
+        let quantity = ["120", "50", "90", "200"];
+        let cost = ["35.0", "65.5", "110.0", "15.0"];
+        let currentIndex = -1;
+
+        function fun1() {
+            let inputName = form6.product_name.value.trim();
+            currentIndex = product.indexOf(inputName);
+            
+            if (currentIndex !== -1) {
+                form6.output_qty.value = "Кількість на складі: " + quantity[currentIndex];
+                form6.output_cost.value = "Вартість за одиницю: " + cost[currentIndex];
+            } else {
+                form6.output_qty.value = "Товар не знайдено";
+                form6.output_cost.value = "";
+                currentIndex = -1;
+            }
+        }
+
+        function fun2() {
+            if (currentIndex !== -1) {
+                let total = parseFloat(quantity[currentIndex]) * parseFloat(cost[currentIndex]);
+                document.getElementById('total_res').innerText = "Загальна вартість товару: " + total;
+            } else {
+                document.getElementById('total_res').innerText = "Спершу знайдіть наявний товар у першому полі!";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="task-box">
+        <h3>Завдання 6.</h3>
+        <p>Товари на літеру «В» (Вафлі, Вертки, Виноград, Вода)</p>
+        <form name="form6">
+            Введіть назву товару: <input type="text" name="product_name" value="Вафлі"><br>
+            <input type="button" value="Наявна кількість і вартість" onClick="fun1()"><br>
+            <input type="text" size="50" name="output_qty"><br>
+            <input type="text" size="50" name="output_cost"><br><br>
+            <input type="button" value="Загальна сума" onClick="fun2()">
+            <p id="total_res" style="font-weight: bold; color: green;"></p>
+        </form>
+    </div>
+
+</body>
+</html>
