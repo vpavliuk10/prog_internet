@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Калькулятор</title>
+<link rel="stylesheet" href="./style/style2.css">
+</head>
+<body>
+
+    <h3>Завдання 2. Калькулятор</h3>
+    <div class="calculator">
+        <form name="calc">
+            <input type="text" name="screen" readonly><br>
+            <div class="buttons">
+                <input type="button" value="1" class="btn" onClick="document.calc.screen.value += '1'">
+                <input type="button" value="2" class="btn" onClick="document.calc.screen.value += '2'">
+                <input type="button" value="3" class="btn" onClick="document.calc.screen.value += '3'">
+                <input type="button" value="+" class="btn" onClick="document.calc.screen.value += '+'">
+
+                <input type="button" value="4" class="btn" onClick="document.calc.screen.value += '4'">
+                <input type="button" value="5" class="btn" onClick="document.calc.screen.value += '5'">
+                <input type="button" value="6" class="btn" onClick="document.calc.screen.value += '6'">
+                <input type="button" value="-" class="btn" onClick="document.calc.screen.value += '-'">
+
+                <input type="button" value="7" class="btn" onClick="document.calc.screen.value += '7'">
+                <input type="button" value="8" class="btn" onClick="document.calc.screen.value += '8'">
+                <input type="button" value="9" class="btn" onClick="document.calc.screen.value += '9'">
+                <input type="button" value="*" class="btn" onClick="document.calc.screen.value += '*'">
+
+                <input type="button" value="C" class="btn" onClick="document.calc.screen.value = ''">
+                <input type="button" value="0" class="btn" onClick="document.calc.screen.value += '0'">
+                <input type="button" value="=" class="btn" onClick="document.calc.screen.value = eval(document.calc.screen.value)">
+                <input type="button" value="/" class="btn" onClick="document.calc.screen.value += '/'">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

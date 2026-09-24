@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    background-color: #fafafa;
+}
+
+h3 {
+    color: #333;
+}
+
+.calculator {
+    display: inline-block;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px; 
+    background-color: #fff;
+}
+
+.calculator input[type="text"] {
+    width: 215px;
+    height: 35px;
+    font-size: 18px;
+    text-align: right;
+    padding: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 45px);
+    gap: 6px; 
+}
+
+.calculator input.btn {
+    width: 45px;
+    height: 45px;
+    font-size: 16px;
+    background-color: #eef2f5;
+    color: #333;
+    border: 1px solid #b0c4de; /* Акуратна рамка кнопок */
+    border-radius: 6px; /* Легке заокруглення кнопок */
+    cursor: pointer;
+}
+
+.calculator input.btn:hover {
+    background-color: #dbe4ee;
+}
