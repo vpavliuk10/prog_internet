@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 1 - Площа фігури</title>
+</head>
+<body>
+
+    <h3>Завдання 1. Обчислення площі трикутника (Варіант 2)</h3>
+
+    <div class="form-group">
+        <label for="base">Основа:</label>
+        <input type="text" id="base" value="4">
+    </div>
+
+    <div class="form-group">
+        <label for="height">Висота:</label>
+        <input type="text" id="height" value="5">
+    </div>
+
+    <div class="form-group">
+        <strong>Площа: </strong> <span id="result">10</span>
+    </div>
+
+    <script>
+        const baseInput = document.getElementById('base');
+        const heightInput = document.getElementById('height');
+        const resultSpan = document.getElementById('result');
+
+        function calculateArea() {
+            let base = parseFloat(baseInput.value) || 0;
+            let height = parseFloat(heightInput.value) || 0;
+
+            let area = 0.5 * base * height;
+
+            resultSpan.textContent = area;
+        }
+
+        baseInput.addEventListener('input', calculateArea);
+        heightInput.addEventListener('input', calculateArea);
+    </script>
+
+</body>
+</html>

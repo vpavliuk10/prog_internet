@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 4</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+        }
+        .gallery { 
+            width: 350px; 
+            text-align: center; 
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            background: #f9f9f9; 
+        }
+        img { 
+            width: 100%; 
+            height: 220px; 
+            object-fit: cover; 
+            border: 1px solid #ddd; 
+            margin-bottom: 10px; 
+        }
+        .buttons-container { 
+            display: flex; 
+            justify-content: space-between; 
+        }
+        button { 
+            padding: 8px 15px; 
+            font-size: 16px; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Завдання 4. Перегляд зображень (Галерея)</h3>
+
+    <div class="gallery">
+        
+        <img id="slider-image" src="" alt="Фото авто">
+        
+        <div class="buttons-container">
+            <button id="prev-btn">Назад</button>
+            <button id="next-btn">Вперед</button>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=500',
+            'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500',
+            'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=500',
+            'https://images.unsplash.com/photo-1563720223185-11003d516935?w=500'
+        ];
+
+        let currentIndex = 0; 
+
+        
+        const sliderImage = document.getElementById('slider-image');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        function updateImage() {
+            sliderImage.src = images[currentIndex];
+        }
+
+        updateImage();
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex++;
+            if (currentIndex >= images.length) {
+                currentIndex = 0; 
+            }
+            updateImage();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1; 
+            }
+            updateImage();
+        });
+    </script>
+
+</body>
+</html>

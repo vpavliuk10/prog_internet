@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 5</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+        }
+        ul { 
+            list-style-type: disc; 
+            margin-top: 5px;
+        }
+        .tree-node > a { 
+            cursor: pointer; 
+            color: #0066cc; 
+            text-decoration: underline; 
+            font-weight: bold;
+        }
+        .hidden { 
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Завдання 5. Ієрархічне дерево (Список)</h3>
+
+    <ul id="root-tree">
+        <li class="tree-node">
+            <a href="#">fruits:</a>
+            <ul class="submenu">
+                <li>apple</li>
+                <li>pineapple</li>
+                <li>appricot</li>
+                <li>pear</li>
+                <li>lemon</li>
+            </ul>
+        </li>
+        <li class="tree-node">
+            <a href="#">vegetables:</a>
+            <ul class="submenu">
+                <li>potatoes</li>
+                <li>beetroot</li>
+                <li>carrots</li>
+                <li>pear</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        const treeLinks = document.querySelectorAll('.tree-node > a');
+
+        treeLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); 
+
+                const submenu = link.nextElementSibling;
+
+                if (submenu) {
+                    submenu.classList.toggle('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
