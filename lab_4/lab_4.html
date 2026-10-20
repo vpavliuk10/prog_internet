@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторна робота 4</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+<header>
+    <div>Мій сайт</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav>
+        <ul id="menu">
+            <li><a href="#">Головна</a></li>
+            <li><a href="#">Про нас</a></li>
+            <li><a href="#">Контакти</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="tab">
+    <button class="tablinks active" onclick="openTab(event, 'Test')">Тестування</button>
+    <button class="tablinks" onclick="openTab(event, 'Theory')">Теоретичні відомості</button>
+</div>
+
+<div id="Test" class="tabcontent" style="display: block;">
+    <form id="testForm">
+        
+        <fieldset>
+            <legend>1. Тег для гіперпосилання?</legend>
+            <label><input type="radio" name="q1" value="1"> &lt;a&gt;</label><br>
+            <label><input type="radio" name="q1" value="-1"> &lt;link&gt;</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>2. Властивість CSS для кольору тексту?</legend>
+            <label><input type="radio" name="q2" value="-1"> background</label><br>
+            <label><input type="radio" name="q2" value="1"> color</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>3. Базові мови веб (2 правильні)</legend>
+            <label><input type="checkbox" name="q3" value="1"> HTML</label><br>
+            <label><input type="checkbox" name="q3" value="-1"> Python</label><br>
+            <label><input type="checkbox" name="q3" value="1"> CSS</label><br>
+            <label><input type="checkbox" name="q3" value="-1"> C++</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>4. Блокові елементи (3 правильні)</legend>
+            <label><input type="checkbox" name="q4" value="1"> &lt;div&gt;</label><br>
+            <label><input type="checkbox" name="q4" value="1"> &lt;p&gt;</label><br>
+            <label><input type="checkbox" name="q4" value="-1"> &lt;span&gt;</label><br>
+            <label><input type="checkbox" name="q4" value="1"> &lt;h1&gt;</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>5. Нумерований список?</legend>
+            <select name="q5">
+                <option value="-1">&lt;ul&gt;</option>
+                <option value="1">&lt;ol&gt;</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>6. Селектори CSS (оберіть правильні)</legend>
+            <select name="q6" multiple size="3">
+                <option value="1">Клас через точку (.)</option>
+                <option value="-1">Клас через кому (,)</option>
+                <option value="1">ID через решітку (#)</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>7. Введіть англійською абревіатуру мови гіпертексту</legend>
+            <input type="text" name="q7">
+            <input type="hidden" name="q7_correct" value="HTML">
+        </fieldset>
+
+        <button type="button" onclick="checkTest()">Завершити тестування</button>
+    </form>
+
+    <table id="resultTable">
+        <thead>
+            <tr><th>№</th><th>Запитання</th><th>Відповідь</th><th>Бал</th></tr>
+        </thead>
+        <tbody id="resultBody"></tbody>
+    </table>
+    <div id="total" class="score"></div>
+</div>
+
+<div id="Theory" class="tabcontent">
+    <h2>Теорія</h2>
+    <p>Тут розміщуються короткі теоретичні відомості про HTML, CSS та JavaScript.</p>
+</div>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('menu').classList.toggle('active');
+    }
+
+    function openTab(evt, tabName) {
+        let contents = document.getElementsByClassName("tabcontent");
+        for (let c of contents) c.style.display = "none";
+        
+        let links = document.getElementsByClassName("tablinks");
+        for (let l of links) l.className = l.className.replace(" active", "");
+        
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    function checkTest() {
+        let form = document.getElementById('testForm');
+        let total = 0;
+        let maxPossibleScore = 10;
+        let tbody = document.getElementById('resultBody');
+        tbody.innerHTML = "";
+
+        let questions = [
+            {id: 1, text: "Тег гіперпосилання", type: "radio", name: "q1"},
+            {id: 2, text: "Колір тексту CSS", type: "radio", name: "q2"},
+            {id: 3, text: "Базові мови веб", type: "checkbox", name: "q3"},
+            {id: 4, text: "Блокові елементи", type: "checkbox", name: "q4"},
+            {id: 5, text: "Нумерований список", type: "select", name: "q5"},
+            {id: 6, text: "Селектори CSS", type: "select-multiple", name: "q6"},
+            {id: 7, text: "Абревіатура HTML", type: "text", name: "q7", correct: "HTML"}
+        ];
+
+        questions.forEach(q => {
+            let score = 0;
+            let ansText = "";
+
+            if (q.type === "radio") {
+                let sel = form.querySelector(`input[name="${q.name}"]:checked`);
+                if (sel) { score = parseInt(sel.value); ansText = sel.parentNode.textContent; }
+                else { ansText = "Немає відповіді"; }
+            } 
+            else if (q.type === "checkbox") {
+                let sels = form.querySelectorAll(`input[name="${q.name}"]:checked`);
+                let sum = 0;
+                let arr = [];
+                sels.forEach(s => { sum += parseInt(s.value); arr.push(s.parentNode.textContent); });
+                let maxQScore = (q.name === "q3") ? 2 : (q.name === "q4" ? 3 : 1);
+                score = Math.min(maxQScore, Math.max(0, sum));
+                ansText = arr.length ? arr.join(", ") : "Немає відповіді";
+            }
+            else if (q.type === "select") {
+                let sel = form.querySelector(`select[name="${q.name}"]`);
+                score = parseInt(sel.value);
+                ansText = sel.options[sel.selectedIndex].text;
+            }
+            else if (q.type === "select-multiple") {
+                let sel = form.querySelector(`select[name="${q.name}"]`);
+                let sum = 0, arr = [];
+                for (let opt of sel.options) {
+                    if (opt.selected) { sum += parseInt(opt.value); arr.push(opt.text); }
+                }
+                score = Math.min(2, Math.max(0, sum));
+                ansText = arr.length ? arr.join(", ") : "Немає відповіді";
+            }
+            else if (q.type === "text") {
+                let val = form.querySelector(`input[name="${q.name}"]`).value.trim();
+                ansText = val || "Пусто";
+                score = (val.toUpperCase() === q.correct.toUpperCase()) ? 1 : 0;
+            }
+
+            total += score;
+            tbody.innerHTML += `<tr><td>${q.id}</td><td>${q.text}</td><td>${ansText}</td><td><b>${score}</b></td></tr>`;
+        });
+
+        let totalDiv = document.getElementById('total');
+        totalDiv.textContent = `Загальний бал: ${total} з ${maxPossibleScore}`;
+        totalDiv.style.display = 'block';
+        document.getElementById('resultTable').style.display = 'table';
+    }
+</script>
+
+</body>
+</html>
