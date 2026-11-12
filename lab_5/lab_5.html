@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа 5</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Реєстрація користувача</h2>
+        <form id="labForm" onsubmit="return false;">
+        <div class="form-group" id="group-email">
+            <label for="email">Email: @cnu.edu.ua</label>
+            <input type="text" id="email" placeholder="example@cnu.edu.ua">
+        </div>
+
+        <div class="form-group" id="group-fullname">
+            <label for="fullname">Ім'я та прізвище:</label>
+            <input type="text" id="fullname" placeholder="Василь Павлюк">
+        </div>    
+        
+        <div class="form-group" id="group-login">
+            <label for="login">Логін:</label>
+            <input type="text" id="login" placeholder="vasya28">
+        </div>
+        
+        <div class="form-group" id="group-password">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" placeholder="********">
+        </div>
+        
+        <div class="form-group" id="group-zip">
+            <label for="zip">Поштовий індекс:</label>
+            <input type="text" id="zip" placeholder="12345">
+        </div>
+            
+        <button type="submit" id="validateBtn">Зареєструватися</button>
+        </form>
+    </div>
+        
+    <script src="./script/script.js"></script>
+
+</body>
+</html>
