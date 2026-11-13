@@ -46,3 +46,15 @@ function task6() {
     let isSpam = spamWords.some(word => a.includes(word));
     document.getElementById("task6-result").textContent = isSpam;
 }
+
+function task7() {
+    let a = document.getElementById("task7-input").value;
+    let maxLength = parseInt(document.getElementById("task7-length").value);
+    let result = "";
+    if (a.length < maxLength) {
+        result = a;
+    } else {
+        result = a.substring(0, maxLength - 3) + "...";
+    }
+    document.getElementById("task7-result").textContent = result;
+}
