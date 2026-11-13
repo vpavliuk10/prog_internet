@@ -6,4 +6,4 @@ function task1() {
 function task2() {
     let a = document.getElementById("task2-input").value;
     document.getElementById("task2-result").textContent = `UPPERCASE: ${a.toUpperCase()} | lowercase: ${a.toLowerCase()}`;
-} 
+}
