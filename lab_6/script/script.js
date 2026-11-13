@@ -39,3 +39,10 @@ function task5() {
     }
     document.getElementById("task5-result").textContent = result;
 }
+
+function task6() {
+    let a = document.getElementById("task6-input").value.toLowerCase();
+    let spamWords = ["100% безкоштовно", "збільшення продажів", "тільки сьогодні", "не видаляйте"];
+    let isSpam = spamWords.some(word => a.includes(word));
+    document.getElementById("task6-result").textContent = isSpam;
+}
