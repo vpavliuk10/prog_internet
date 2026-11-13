@@ -26,3 +26,16 @@ function task4() {
     }
     document.getElementById("task4-result").textContent = count;
 }
+
+function task5() {
+    let a = document.getElementById("task5-input").value;
+    let result = "";
+    for (let i = 0; i < a.length; i += 2) {
+        if (i + 1 < a.length) {
+            result += a[i + 1] + a[i];
+        } else {
+            result += a[i];
+        }
+    }
+    document.getElementById("task5-result").textContent = result;
+}
