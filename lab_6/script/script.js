@@ -73,7 +73,7 @@ function task8() {
     }
 
 function runTask8() {
-     let input = document.getElementById("task8-input").value;
+     let input = document.getElementById("inputTask8").value;
      let output = task8(input);
      document.getElementById("task8-result").textContent = output;
 }
