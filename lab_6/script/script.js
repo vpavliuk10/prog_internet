@@ -7,3 +7,9 @@ function task2() {
     let a = document.getElementById("task2-input").value;
 document.getElementById("task2-result").textContent = `UPPERCASE: ${a.toUpperCase()} | lowercase: ${a.toLowerCase()}`;
 }
+
+function task3() {
+    let a = document.getElementById("task3-input").value;
+    let b = document.getElementById("task3-char").value;
+    document.getElementById("task3-result").textContent = a.indexOf(b);
+}
