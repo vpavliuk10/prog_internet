@@ -100,5 +100,5 @@ function findMostFrequentChar(str) {
         function runTask9() {
             let inputVal = document.getElementById("inputTask9").value;
             let output = findMostFrequentChar(inputVal);
-            document.getElementById("result9").textContent = output;
+            document.getElementById("task9-result").textContent = output;
         }
