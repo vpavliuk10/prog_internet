@@ -59,7 +59,7 @@ function task7() {
     document.getElementById("task7-result").textContent = result;
 }
 
-function task8() {
+function task8(str) {
     let words = str.trim().split(/\s+/);
     if (words.length === 1 && words[0] === "") return "";
 
