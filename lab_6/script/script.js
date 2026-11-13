@@ -77,3 +77,28 @@ function runTask8() {
      let output = task8(input);
      document.getElementById("task8-result").textContent = output;
 }
+
+
+function findMostFrequentChar(str) {
+            let cleanStr = str.replace(/\s+/g, '');
+            if (cleanStr.length === 0) return "Рядок порожній";
+
+            let charCount = {};
+            let maxChar = '';
+            let maxCount = 0;
+
+            for (let char of cleanStr) {
+                charCount[char] = (charCount[char] || 0) + 1;
+                if (charCount[char] > maxCount) {
+                    maxCount = charCount[char];
+                    maxChar = char;
+                }
+            }
+            return maxChar;
+        }
+
+        function runTask9() {
+            let inputVal = document.getElementById("inputTask9").value;
+            let output = findMostFrequentChar(inputVal);
+            document.getElementById("result9").textContent = output;
+        }
