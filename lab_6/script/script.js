@@ -58,3 +58,22 @@ function task7() {
     }
     document.getElementById("task7-result").textContent = result;
 }
+
+function task8() {
+    let words = str.trim().split(/\s+/);
+    if (words.length === 1 && words[0] === "") return "";
+
+    words.sort((a, b) => {
+        if (a.length !== b.length) {
+            return a.length - b.length;
+        }
+        return a.localeCompare(b);
+    });
+    return words.join(" ");
+    }
+
+function runTask8() {
+     let input = document.getElementById("task8-input").value;
+     let output = task8(input);
+     document.getElementById("task8-result").textContent = output;
+}
