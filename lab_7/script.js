@@ -10,7 +10,7 @@ const timeObj = {
     },
     addSeconds(secToAdd) {
         let totalSeconds = this.hours * 3600 + this.minutes * 60 + this.seconds + Number(secToAdd);
-        totalSeconds = (totalSeconds % 86400 + 86400) % 86400;
+        totalSeconds = (totalSeconds % 86400 + 86400) % 86400; 
         
         this.hours = Math.floor(totalSeconds / 3600);
         this.minutes = Math.floor((totalSeconds % 3600) / 60);
@@ -25,5 +25,6 @@ function runTask1() {
     timeObj.updateFromCurrent();
     let sec = document.getElementById("seconds-input").value;
     timeObj.addSeconds(sec);
+    document.getElementById("task1-result.textContent" = `Новий час: ${timeObj.toString()}`);
     document.getElementById("task1-result").textContent = `Новий час: ${timeObj.toString()}`;
 }
