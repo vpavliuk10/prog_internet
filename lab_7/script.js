@@ -38,3 +38,37 @@ function showCurrentTime() {
 }
 
 showCurrentTime();
+
+function runTask2_1() {
+    const days = ['неділя', 'понеділок', 'вівторок', 'середа', 'четвер', 'п’ятниця', 'субота'];
+    const months = ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня'];
+
+    const now = new Date();
+    const dateStr = `Дата: ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()} року`;
+    const dayStr = `День тижня: ${days[now.getDay()]}`;
+    const timeStr = `Час: ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    
+    document.getElementById("task2-1-result").innerHTML = `${dateStr}<br>${dayStr}<br>${timeStr}`;
+}
+
+function runTask2_2() {
+    let year = document.getElementById("year-input").value;
+    let month = document.getElementById("month-input").value;
+    if (!year || month === "") {
+        document.getElementById("task2-2-result").textContent = "Будь ласка, введіть рік та місяць.";
+        return;
+    }
+    let lastDay = new Date(year, Number(month), 0).getDate();
+    document.getElementById("task2-2-result").textContent = `Останній день місяця: ${lastDay}`;
+}
+
+function runTask2_3() {
+    const now = new Date();
+    const startOfYear = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const nextDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+
+    let secondsPassed = Math.floor((now - startOfYear) / 1000);
+    let secondsLeft = Math.floor((nextDay - now) / 1000);
+
+    document.getElementById("task2-3-result").textContent = `Секунд, що пройшли з початку дня: ${secondsPassed}<br>Секунд, що залишилось до кінця дня: ${secondsLeft}`;
+}
