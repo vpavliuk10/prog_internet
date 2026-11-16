@@ -25,7 +25,6 @@ function runTask1() {
     timeObj.updateFromCurrent();
     let sec = document.getElementById("seconds-input").value;
     timeObj.addSeconds(sec);
-    document.getElementById("task1-result.textContent" = `Новий час: ${timeObj.toString()}`);
     document.getElementById("task1-result").textContent = `Новий час: ${timeObj.toString()}`;
 }
 
