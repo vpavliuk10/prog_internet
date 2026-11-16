@@ -48,18 +48,18 @@ function runTask2_1() {
     const dayStr = `День тижня: ${days[now.getDay()]}`;
     const timeStr = `Час: ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
     
-    document.getElementById("task2_1-result").innerHTML = `${dateStr}<br>${dayStr}<br>${timeStr}`;
+    document.getElementById("task2-1-result").innerHTML = `${dateStr}<br>${dayStr}<br>${timeStr}`;
 }
 
 function runTask2_2() {
     let year = document.getElementById("year-input").value;
     let month = document.getElementById("month-input").value;
     if (!year || month === "") {
-        document.getElementById("task2_2-result").textContent = "Будь ласка, введіть рік та місяць.";
+        document.getElementById("task2-2-result").textContent = "Будь ласка, введіть рік та місяць.";
         return;
     }
     let lastDay = new Date(Number(year), Number(month), 0).getDate();
-    document.getElementById("task2_2-result").textContent = `Останній день місяця: ${lastDay}`;
+    document.getElementById("task2-2-result").textContent = `Останній день місяця: ${lastDay}`;
 }
 
 function runTask2_3() {
@@ -70,5 +70,5 @@ function runTask2_3() {
     let secondsPassed = Math.floor((now - startOfDay) / 1000);
     let secondsLeft = Math.floor((nextDay - now) / 1000);
 
-    document.getElementById("task2_3-result").innerHTML = `Секунд, що пройшли з початку доби: ${secondsPassed}<br>Секунд, що залишилось до кінця доби: ${secondsLeft}`;
+    document.getElementById("task2-3-result").innerHTML = `Секунд, що пройшли з початку доби: ${secondsPassed}<br>Секунд, що залишилось до кінця доби: ${secondsLeft}`;
 }
