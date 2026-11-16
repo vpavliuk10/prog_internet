@@ -29,11 +29,13 @@ function runTask1() {
     document.getElementById("task1-result").textContent = `Новий час: ${timeObj.toString()}`;
 }
 
-window.onload = function() {
+function showCurrentTime() {
     const now = new Date();
     const currentTimeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
     let timeEl = document.getElementById("current-time");
     if (timeEl) {
         timeEl.textContent = currentTimeStr;
     }
-};
+}
+
+showCurrentTime();
