@@ -58,17 +58,17 @@ function runTask2_2() {
         document.getElementById("task2_2-result").textContent = "Будь ласка, введіть рік та місяць.";
         return;
     }
-    let lastDay = new Date(year, Number(month), 0).getDate();
+    let lastDay = new Date(Number(year), Number(month), 0).getDate();
     document.getElementById("task2_2-result").textContent = `Останній день місяця: ${lastDay}`;
 }
 
 function runTask2_3() {
     const now = new Date();
-    const startOfYear = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     const nextDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 
-    let secondsPassed = Math.floor((now - startOfYear) / 1000);
+    let secondsPassed = Math.floor((now - startOfDay) / 1000);
     let secondsLeft = Math.floor((nextDay - now) / 1000);
 
-    document.getElementById("task2_3-result").textContent = `Секунд, що пройшли з початку дня: ${secondsPassed}<br>Секунд, що залишилось до кінця дня: ${secondsLeft}`;
+    document.getElementById("task2_3-result").innerHTML = `Секунд, що пройшли з початку доби: ${secondsPassed}<br>Секунд, що залишилось до кінця доби: ${secondsLeft}`;
 }
